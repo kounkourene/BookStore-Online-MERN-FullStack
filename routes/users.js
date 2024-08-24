@@ -34,7 +34,7 @@ router.post(
       lastName,
       email,
       phoneNumber,
-      address,
+      //address
       password,
     } = req.body;
 
@@ -46,12 +46,13 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: "User already exists" }] });
       }
+
       user = new User({
         firstName,
         lastName,
         email,
         phoneNumber,
-        address,
+        //address,
         password,
       });
 
@@ -68,5 +69,74 @@ router.post(
     }
   }
 );
+
+// GET all Users
+router.get("/", async (req, res) => {
+  try {
+    const getUser = await User.find();
+    res.json(getUser);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// GET User by ID
+
+router.get("/:id", async (req, res) => {
+  try {
+    const getUserbyID = await User.findById(req.params.id);
+    if (!getUserbyID) {
+      return res.status(400).json({ msg: "User not found" });
+    }
+    res.json(getUserbyID);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({ msg: "Post not found" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
+
+//Update User
+router.put("/:id", async (req, res) => {
+  try {
+    const updateUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updateUser) {
+      return res.status(400).json({ msg: "User not found" });
+    }
+
+    res.json({ msg: "User updated" });
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({ msg: "user not found" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
+
+// Delete User
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleteUser = await User.findByIdAndDelete(req.params.id);
+    if (!deleteUser) {
+      return res.status(400).json({ msg: "User not found" });
+    }
+
+    res.json({ msg: "User deleted" });
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({ msg: "User not found" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
 
 module.exports = router;
