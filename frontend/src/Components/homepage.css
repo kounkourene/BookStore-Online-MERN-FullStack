@@ -1,0 +1,174 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00599c;
+  height: 9.6rem;
+  padding: 0 4.8rem;
+}
+
+.input-header {
+  border-radius: 2rem;
+  height: 3rem;
+  margin-left: 30rem;
+  margin-right: 5rem;
+}
+.header-button {
+  border-radius: 2rem;
+  height: 3rem;
+  cursor: pointer;
+}
+#newest-list {
+  font-size: 3rem;
+  color: #00599c;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+.home-text {
+  margin-top: 5rem;
+}
+.image-webp {
+  margin-top: 10rem;
+  width: 20rem;
+}
+.options {
+  margin-top: 5rem;
+  color: #00599c;
+  font: size 40rem;
+}
+
+.image-logo {
+  height: 6rem;
+}
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  gap: 3.2rem;
+}
+.main-nav-link:link,
+.main-nav-link:visited {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.5rem;
+  transition: all 1s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #a2f3a3;
+  width: 2rem;
+  height: 2rem;
+}
+.section-header {
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+  margin-bottom: 3.2rem;
+  margin-top: 0.01rem;
+  background-color: #e1ecf7;
+}
+.book-list-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 130rem;
+  margin: 0 auto;
+  gap: 20rem;
+}
+.book-description {
+  font-size: 2.5rem;
+  margin-top: 3rem;
+}
+.ul-list-books1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.list-books-images {
+  list-style: none;
+  display: flex;
+  gap: 5rem;
+  display: flex;
+  margin-top: 3rem;
+}
+.general-section1-division {
+  display: flex;
+  justify-content: center;
+  background-color: #e1ecf7;
+  margin: 0 auto;
+}
+.ul-list-books2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.list-books-images2 {
+  list-style: none;
+  display: flex;
+  gap: 5rem;
+  display: flex;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+.ul-list-books3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.list-books-images3 {
+  list-style: none;
+  display: flex;
+  gap: 5rem;
+  display: flex;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+
+.general-section2-division {
+  display: flex;
+  justify-content: center;
+  background-color: #e1ecf7;
+}
+.general-section3-division {
+  display: flex;
+  justify-content: center;
+  background-color: #e1ecf7;
+}
+
+.add-to-cart {
+  background-color: #00599c;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.book-price {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer {
+  margin-top: 80rem;
+  font-size: 2rem;
+  text-align: center;
+  background-color: #00599c;
+  height: 20rem;
+  color: #191818;
+}
+.footer-link:link,
+.footer-link:visited {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 2rem;
+  transition: all 1s;
+}
+.footer-link:hover,
+.footer-link:active {
+  color: #100f0f;
+}
