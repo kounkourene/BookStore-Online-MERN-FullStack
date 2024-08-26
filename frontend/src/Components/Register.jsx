@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Register.css";
-import logoImage from "../assets/images/BookstoreLogo.png";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+//import logoImage from "../assets/images/BookstoreLogo.png";
 
 const Register = () => {
   return (
     <div>
-      <header className="header">
+      {/* <header className="header">
         <img src={logoImage} alt="bookstore-logo" className="image-logo" />
         <form>
           <input className="input-header" type="text" name="search" size="40" />
@@ -36,7 +38,7 @@ const Register = () => {
             </li>
           </ul>
         </nav>
-      </header>
+      </header> */}
       <div>
         <h2>Fill out this form to create your account</h2>
       </div>
@@ -58,7 +60,7 @@ const Register = () => {
           />
           <label>Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             className="register-form"
@@ -92,13 +94,14 @@ const Register = () => {
             className="register-form"
           />
         </form>
+        <Link to="/">Login Page</Link>
       </div>
 
-      <div className="footer">
+      {/* <div className="footer">
         <footer>
           <p>Copyright &COPY; 2024 By Rene Kounkou</p>
         </footer>
-      </div>
+      </div> */}
     </div>
   );
 };

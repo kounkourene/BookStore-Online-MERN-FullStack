@@ -1,5 +1,6 @@
 import React from "react";
 import "./homepage.css";
+import logoImage from "../assets/images/BookstoreLogo.png";
 import image1 from "../assets/images/1.jpg";
 import image2 from "../assets/images/2.jpg";
 import image3 from "../assets/images/3.jpg";
@@ -18,10 +19,64 @@ import image15 from "../assets/images/15.webp";
 import image16 from "../assets/images/16.webp";
 import image17 from "../assets/images/17.webp";
 import image18 from "../assets/images/18.webp";
+//import { useLocation, useNavigate } from "react-router-dom";
 
-const Listbooks = () => {
+const Homepage = () => {
+  const [searchInput, setSearchInput] = "";
+  const [searchQuery, setSearchQuery] = "";
   return (
     <section>
+      <div>
+        <header className="header">
+          <img src={logoImage} alt="bookstore-logo" className="image-logo" />
+
+          <form>
+            <input
+              className="input-header"
+              type="text"
+              name="search"
+              size="40"
+            />
+            <button className="header-button">Search</button>
+          </form>
+
+          <nav>
+            <ul className="main-nav-list">
+              <li>
+                <a className="main-nav-link" href="#Home">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a className="main-nav-link" href="login.html">
+                  Sign In
+                </a>
+              </li>
+              <li>
+                <a className="main-nav-link" href="register.html">
+                  Register
+                </a>
+              </li>
+              <li>
+                <a className="main-nav-link" href="#Addtocart">
+                  Cart
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <section className="section-header">
+          <div className="book-list-detail">
+            <div className="book-description">
+              <p className="home-text">
+                Find your place at Evergreen online Bookstore. Over 1 million
+                books ready to ship, 1.5 million eBooks and 100,000 audiobooks
+                to download right now.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>{" "}
       <div className="book-details1">
         <div className="general-section1-division">
           <div className="ul-list-books1">
@@ -162,7 +217,6 @@ const Listbooks = () => {
           </div>
         </div>
       </div>
-
       <div className="book-details2">
         <div className="general-section2-division">
           <div className="ul-list-books2">
@@ -431,8 +485,13 @@ const Listbooks = () => {
           </ul>
         </div>
       </div>
+      <div className="footer">
+        <footer>
+          <p>Copyright &COPY; 2024 By Rene Kounkou</p>
+        </footer>
+      </div>
     </section>
   );
 };
 
-export default Listbooks;
+export default Homepage;

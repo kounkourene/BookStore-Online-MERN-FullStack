@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 import logoImage from "../assets/images/BookstoreLogo.png";
 
 const Login = () => {
   return (
     <div>
-      <header className="header">
+      {/* <header className="header">
         <img src={logoImage} alt="bookstore-logo" className="image-logo" />
         <form>
           <input className="input-header" type="text" name="search" size="40" />
@@ -36,11 +38,12 @@ const Login = () => {
             </li>
           </ul>
         </nav>
-      </header>
+      </header> */}
       <div className="wrapper">
-        <form action="POST" className="login-form">
+        <form className="login-form">
           <div className="sign-in-account">
-            <a href="register.html">New user: Create an Account</a>
+            <Link to="register">New user: Create an Account</Link>
+            {/* <a href="register.html">New user: Create an Account</a> */}
           </div>
 
           <div className="input-container">
@@ -58,6 +61,9 @@ const Login = () => {
             <label>Password</label>
             <input
               type="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               placeholder="Enter your password"
               className="login-btn"
               name="password"
@@ -67,6 +73,7 @@ const Login = () => {
 
           <input
             type="submit"
+            onClick={submit}
             name="button"
             value="Sign In"
             className="login-btn login"
@@ -77,15 +84,16 @@ const Login = () => {
             <label>Remember me</label>
           </div>
         </form>
+        <Link to="Register Page"></Link>
       </div>
-      <div>
+      {/* <div>
         <div className="footer">
           <footer>
             <p>Copyright &COPY; 2024 By Rene Kounkou</p>
           </footer>
         </div>
       </div>
-      ;
+      ; */}
     </div>
   );
 };
