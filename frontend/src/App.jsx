@@ -3,8 +3,13 @@ import Homepage from "./Components/Homepage";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+//import { useState } from "react";
 
 const App = () => {
   return (

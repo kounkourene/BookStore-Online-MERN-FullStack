@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://kounkourene:Sandra1982@bookstoreonline.xcuvi.mongodb.net/?retryWrites=true&w=majority&appName=BookStoreOnline"
+  "mongoURI": "mongodb+srv://kounkourene:Sandra1982@bookstoreonline.xcuvi.mongodb.net/?retryWrites=true&w=majority&appName=BookStoreOnline",
+  "jwtSecret": "mysecrettoken"
 }

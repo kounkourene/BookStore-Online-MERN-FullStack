@@ -1,87 +1,58 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 
-const User = require("../models/User");
+const User = require("../model/User");
 
-// @route POST user
-// Register User
-
-router.post(
-  "/",
-
-  [
-    check("firstName", "firstName is required").not().isEmpty(),
-    check("lastName", "lastName is required").not().isEmpty(),
-    check("email", "Please include a valid email").isEmail(),
-    check("phoneNumber", "phoneNumer is required").not().isEmpty(),
-    check("address", "adress is required").not().isEmpty(),
-    check(
-      "[password",
-      "Please enter a password with 6 or more characters"
-    ).isLength({ min: 6 }),
-  ],
-
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const {
+//Register User
+router.post("/register", async (req, res) => {
+  try {
+    const { firstName, lastName, email, phoneNumber, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({
       firstName,
       lastName,
       email,
       phoneNumber,
-      //address
-      password,
-    } = req.body;
-
-    try {
-      let user = await User.findOne({ email });
-
-      if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "User already exists" }] });
-      }
-
-      user = new User({
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        //address,
-        password,
-      });
-
-      const salt = await bcrypt.genSalt(10);
-
-      user.password = await bcrypt.hash(password, salt);
-
-      await user.save();
-
-      res.send("User registered");
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server error");
-    }
+      password: hashedPassword,
+    });
+    await newUser.save();
+    res.status(201).send("User registered successfully");
+  } catch (error) {
+    res.status(500).send("Server Error");
   }
-);
+});
 
-// GET all Users
+//Login User
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (user && (await bcrypt.compare(password, user.password))) {
+      res.cookie("userToken", user._id.toString(), { httpOnly: true });
+      res.status(200).send("Login successfull");
+    } else {
+      res.status(401).send("Invalid credentials");
+    }
+  } catch (error) {
+    res.status(500).send("Server Error");
+  }
+});
+
+//GET all Users
 router.get("/", async (req, res) => {
   try {
-    const getUser = await User.find();
-    res.json(getUser);
+    const getUsers = await User.find();
+    res.json(getUsers);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
 
-// GET User by ID
+//GET User by ID
 
 router.get("/:id", async (req, res) => {
   try {
@@ -93,13 +64,13 @@ router.get("/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
     if (err.kind === "ObjectId") {
-      return res.status(400).json({ msg: "Post not found" });
+      return res.status(400).json({ msg: "User not found" });
     }
     res.status(500).send("Server Error");
   }
 });
 
-//Update User
+// Update User
 router.put("/:id", async (req, res) => {
   try {
     const updateUser = await User.findByIdAndUpdate(req.params.id, req.body, {
