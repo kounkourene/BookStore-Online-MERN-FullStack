@@ -3,26 +3,21 @@ import Homepage from "./Components/Homepage";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 //import { useState } from "react";
 
 const App = () => {
   return (
-    <div className="my-app">
-      <Router>
+    <Router>
+      <div className="my-app">
         <Routes>
           <Route path="/" element={<Homepage />} />
-
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 };
 

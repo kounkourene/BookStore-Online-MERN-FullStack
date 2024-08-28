@@ -10,14 +10,16 @@
 .input-header {
   border-radius: 2rem;
   height: 3rem;
-  margin-left: 30rem;
+  margin-left: 45rem;
   margin-right: 5rem;
+  margin-top: 2rem;
 }
 .header-button {
   border-radius: 2rem;
   height: 3rem;
   cursor: pointer;
 }
+
 #newest-list {
   font-size: 3rem;
   color: #00599c;
@@ -153,22 +155,13 @@
 }
 
 .footer {
-  margin-top: 80rem;
-  font-size: 2rem;
+  margin-top: 10rem;
+  font-size: 1.5rem;
   text-align: center;
   background-color: #00599c;
-  height: 20rem;
-  color: #191818;
+  height: 8rem;
 }
-.footer-link:link,
-.footer-link:visited {
-  text-decoration: none;
+.footer-text {
   color: #fff;
-  font-weight: 400;
-  font-size: 2rem;
-  transition: all 1s;
-}
-.footer-link:hover,
-.footer-link:active {
-  color: #100f0f;
+  font-size: 1.5rem;
 }

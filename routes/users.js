@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../model/User");
+const cors = require("cors");
 
 //Register User
 router.post("/register", async (req, res) => {
@@ -39,6 +40,12 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     res.status(500).send("Server Error");
   }
+});
+
+// Logout User
+router.post("/logout", (req, res) => {
+  res.clearCookie("userToken");
+  res.status(200).send("Logout successfull");
 });
 
 //GET all Users

@@ -1,13 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import logoImage from "../assets/images/BookstoreLogo.png";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    const data = {
+      email: email,
+      password: password,
+    };
+    try {
+      await axios.post("http://localhost:5000/users/login", data);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   return (
     <div>
-      {/* <header className="header">
+      <header className="header">
         <img src={logoImage} alt="bookstore-logo" className="image-logo" />
         <form>
           <input className="input-header" type="text" name="search" size="40" />
@@ -17,37 +33,36 @@ const Login = () => {
         <nav>
           <ul className="main-nav-list">
             <li>
-              <a className="main-nav-link" href="homepage.html">
+              <Link to="/" className="main-nav-link">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="main-nav-link" href="login.html">
+              <Link to="/login" className="main-nav-link">
                 Sign In
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="main-nav-link" href="register.html">
+              <Link to="/register" className="main-nav-link">
                 Register
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="main-nav-link" href="#Addtocart">
+              <Link to="/" className="main-nav-link">
                 Cart
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
-      </header> */}
+      </header>
       <div className="wrapper">
         <form className="login-form">
           <div className="sign-in-account">
-            <Link to="register">New user: Create an Account</Link>
-            {/* <a href="register.html">New user: Create an Account</a> */}
+            <Link to="/register">New user: Create an Account</Link>
           </div>
 
           <div className="input-container">
-            <label>User Name</label>
+            <label>Email</label>
             <input
               type="email"
               onChange={(e) => {
@@ -73,7 +88,7 @@ const Login = () => {
 
           <input
             type="submit"
-            onClick={submit}
+            onClick={handleLogin}
             name="button"
             value="Sign In"
             className="login-btn login"
@@ -84,16 +99,15 @@ const Login = () => {
             <label>Remember me</label>
           </div>
         </form>
-        <Link to="Register Page"></Link>
       </div>
-      {/* <div>
+      <div>
         <div className="footer">
           <footer>
             <p>Copyright &COPY; 2024 By Rene Kounkou</p>
           </footer>
         </div>
       </div>
-      ; */}
+      ;
     </div>
   );
 };

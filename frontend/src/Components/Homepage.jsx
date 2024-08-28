@@ -19,11 +19,9 @@ import image15 from "../assets/images/15.webp";
 import image16 from "../assets/images/16.webp";
 import image17 from "../assets/images/17.webp";
 import image18 from "../assets/images/18.webp";
-//import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
-  const [searchInput, setSearchInput] = "";
-  const [searchQuery, setSearchQuery] = "";
   return (
     <section>
       <div>
@@ -43,24 +41,24 @@ const Homepage = () => {
           <nav>
             <ul className="main-nav-list">
               <li>
-                <a className="main-nav-link" href="#Home">
+                <Link to="" className="main-nav-link">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="main-nav-link" href="login.html">
+                <Link to="login" className="main-nav-link">
                   Sign In
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="main-nav-link" href="register.html">
+                <Link to="register" className="main-nav-link">
                   Register
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="main-nav-link" href="#Addtocart">
+                <Link to="" className="main-nav-link">
                   Cart
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -487,7 +485,7 @@ const Homepage = () => {
       </div>
       <div className="footer">
         <footer>
-          <p>Copyright &COPY; 2024 By Rene Kounkou</p>
+          <p className="footer-text">Copyright; 2024 By Rene Kounkou</p>
         </footer>
       </div>
     </section>
